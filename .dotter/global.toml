@@ -1,0 +1,13 @@
+[helpers]
+
+[default]
+depends = []
+
+[default.files]
+"61-pixel-keyboard.hwdb" = "/etc/udev/hwdb.d/61-pixel-keyboard.hwdb"
+"tlp.conf" = "/etc/tlp.conf"
+
+[default.variables]
+
+[settings]
+default_target_type = "automatic"

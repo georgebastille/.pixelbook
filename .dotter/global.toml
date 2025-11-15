@@ -6,6 +6,8 @@ depends = []
 [default.files]
 "61-pixel-keyboard.hwdb" = "/etc/udev/hwdb.d/61-pixel-keyboard.hwdb"
 "tlp.conf" = "/etc/tlp.conf"
+"ntpd.conf" = "/etc/ntpd.conf"
+"10-uki.conf" = "/etc/dracut.conf.d/10-uki.conf"
 
 [default.variables]
 

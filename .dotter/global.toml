@@ -8,6 +8,7 @@ depends = []
 "tlp.conf" = "/etc/tlp.conf"
 "10-uki.conf" = "/etc/dracut.conf.d/10-uki.conf"
 "30-uki-rotate" = "/etc/kernel.d/post-install/30-uki-rotate"
+"dracut-uefi-hook" = "/etc/default/dracut-uefi-hook"
 
 [default.variables]
 

@@ -1,0 +1,19 @@
+# Options for the dracut-uefi kernel hook script installed by the dracut package.
+
+# To enable EFI bundle creation in dracut, set dracut-uefi
+# as the initramfs alternative provider:
+#     xbps-alternatives -s dracut-uefi
+
+# Setting the kernel command-line is required.
+# You can set the kernel command line with
+KERNEL_CMDLINE="quiet loglevel=4 rd.udev.log_level=3 rd.luks=0 rd.lvm=0 rd.md=0 rd.dm=0 rootfstype=ext4 i915.enable_psr=1 i915.enable_dc=2 i915.enable_fbc=1 noresume mitigations=off nmi_watchdog=0 iomem=relaxed mem_sleep_default=deep"
+#KERNEL_CMDLINE="loglevel=4"
+# or by setting kernel_cmdline in a dracut.conf(5) file.
+# The bundle can also use the command line from a bootloader / boot manager
+# if Secure Boot is disabled.
+
+# You can set command line options for the dracut command
+DRACUT_OPTIONS="--hostonly"
+
+# Output directory for the EFI bundle
+UEFI_BUNDLE_DIR="boot/efi/EFI/void/"

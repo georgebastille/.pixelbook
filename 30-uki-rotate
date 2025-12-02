@@ -1,0 +1,31 @@
+#!/bin/sh
+# Rotate "current" and "previous" UKIs on kernel install.
+# Args: $1 = pkgname (e.g. linux6.12), $2 = version (e.g. 6.12.57_1)
+
+PKGNAME="$1"
+VERSION="$2"
+
+# Match dracut-uefi default; relative to $ROOTDIR
+BUNDLEDIR="boot/efi/EFI/void"
+
+# ROOTDIR is set by xbps-reconfigure (for chroots etc.)
+cd "${ROOTDIR:-/}" || exit 0
+
+# Per-version UKI created by dracut-uefi
+UKI_VERSION="${BUNDLEDIR}/linux-${VERSION}.efi"
+
+# If dracut-uefi didn't create it, nothing to do
+[ -f "${UKI_VERSION}" ] || exit 0
+
+CURRENT="${BUNDLEDIR}/void-linux-current.efi"
+PREV="${BUNDLEDIR}/void-linux-previous.efi"
+
+# If we have a current UKI, make it "previous"
+if [ -f "${CURRENT}" ]; then
+    cp -f "${CURRENT}" "${PREV}"
+fi
+
+# New version becomes "current"
+cp -f "${UKI_VERSION}" "${CURRENT}"
+
+exit 0
